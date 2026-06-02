@@ -58,6 +58,7 @@ import ContadorLimitado from './components/ContadorLimitado'
 import FormularioRegistro from './components/FormularioRegistro'
 import ListaCompras from './components/ListaCompras'
 import BuscadorPaises from './components/BuscadorPaises'
+import Cronometro from './components/Cronometro'
 
 /* 
   Datos de ejemplo — tareas mockeadas.
@@ -213,6 +214,34 @@ function App() {
           🧑‍🏫 Módulo 03 — Ejercicio 2: Buscador en Tiempo Real
         </h2>
         <BuscadorPaises />
+      </section>
+
+      {/* 
+        ═══════════════════════════════════════════════
+        MÓDULO 04: Efectos y Persistencia
+        ═══════════════════════════════════════════════
+        
+        - useEffect sincroniza el estado con localStorage
+        - Lazy initializer en useState para lectura inicial
+        - Cleanup de intervalos para evitar memory leaks
+      */}
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 04 — Ejercicio 1: Persistencia localStorage
+        </h2>
+        <p className="ejercicios-section__desc">
+          La lista de compras ahora PERSISTE al recargar la página.
+          Probá: agregá items, recargá (F5) y deberían seguir ahí.
+        </p>
+        <ListaCompras />
+      </section>
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 04 — Ejercicio 2: Cronómetro con Cleanup
+        </h2>
+        <Cronometro />
       </section>
 
       {/* TaskList con las tareas mockeadas de Taskify */}

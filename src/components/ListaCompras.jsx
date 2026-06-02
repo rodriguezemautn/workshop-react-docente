@@ -1,78 +1,156 @@
 /* =========================================================
-   ListaCompras — CRUD completo de una lista de compras
-   Módulo 03: Interactividad y Listas
+   ListaCompras — CRUD completo con persistencia localStorage
+   Módulo 04: Efectos Secundarios y Persistencia
    =========================================================
 
    📖 ¿Qué es este componente?
    ────────────────────────────
    Una lista de compras completamente funcional con las
-   operaciones CRUD básicas:
-   - CREATE: formulario para agregar items
-   - READ: muestra la lista de items
-   - UPDATE: checkbox para marcar como comprado
-   - DELETE: botón para eliminar items + "Limpiar comprados"
+   operaciones CRUD básicas Y persistencia en localStorage.
+   Los items sobreviven al cerrar y reabrir el navegador.
 
-   🔑 Conceptos clave que practica:
+   🔑 Conceptos NUEVOS (Módulo 04):
    ─────────────────────────────────
-   1. useState con ARRAYS — Actualizar arrays inmutables:
+   1. LAZY INITIALIZER en useState:
+      useState(() => { ... }) — función que se ejecuta UNA
+      SOLA VEZ al montar el componente. Ideal para lecturas
+      costosas como localStorage.
       
-      ❌ INCORRECTO: items.push(nuevo) — muta el array
-      ✅ CORRECTO:   [...items, nuevo] — spread crea copia
+      Sin lazy initializer:
+        const [items, setItems] = useState(JSON.parse(localStorage.getItem(...)))
+        ❌ Se ejecuta en CADA render (aunque React solo usa
+           el valor en el primer render, igual se evalúa)
       
-      (react.dev/learn/updating-arrays-in-state)
-
-   2. .map() — Actualizar un elemento específico:
-      setItems(items.map(item =>
-        item.id === id ? { ...item, comprado: !item.comprado } : item
-      ))
+      Con lazy initializer:
+        const [items, setItems] = useState(() => JSON.parse(...))
+        ✅ Solo se ejecuta UNA vez
       
-   3. .filter() — Eliminar elementos:
-      - Eliminar uno: items.filter(item => item.id !== id)
-      - Eliminar varios: items.filter(item => !item.comprado)
+      (react.dev/reference/react/useState#parameters)
 
-   4. LIFTING STATE UP — El estado vive en el componente,
-      las funciones de cambio se pasan como props a hijos.
-      En este caso, TODO vive en ListaCompras (es autónomo).
+   2. useEffect — Sincronizar con sistemas EXTERNOS:
+      - Escribir en localStorage
+      - Llamadas a APIs (Módulo 07)
+      - Timers (Ejercicio 02 de este módulo)
+      - Suscripciones a eventos
+      
+      useEffect se ejecuta DESPUÉS del render, no durante.
+      Las dependencias [items] controlan CUÁNDO se ejecuta.
+      
+      (react.dev/reference/react/useEffect)
 
-   5. RENDERIZADO CONDICIONAL AVANZADO:
-      - Estado vacío vs lista con items
-      - Items comprados con estilo diferente
-      - Botón "Limpiar comprados" visible solo si hay comprados
+   3. TRY/CATCH para localStorage corrupto:
+      Si localStorage tiene datos inválidos (JSON mal formado),
+      JSON.parse() lanza un error. Con try/catch la app no
+      se rompe y arranca con lista vacía.
+
+   🔑 Conceptos que se MANTIENEN (Módulo 03):
+   ──────────────────────────────────────────
+   - useState con arrays y actualización inmutable
+   - .map() para toggle, .filter() para eliminar
+   - Valores derivados (totalItems, itemsComprados)
+   - Renderizado condicional avanzado
+
+   🚀 Almacenamiento en el navegador:
+   ──────────────────────────────────
+   localStorage vs sessionStorage:
+   - localStorage: persiste hasta que se borre manualmente
+   - sessionStorage: se borra al cerrar la pestaña
+   
+   Ambos almacenan SOLO strings. Para guardar objetos/arrays
+   usamos JSON.stringify() al guardar y JSON.parse() al leer.
+   
+   Límite: ~5MB por dominio.
 
    📚 Referencias:
    ────────────────
-   - react.dev/learn/updating-arrays-in-state
-   - react.dev/learn/rendering-lists
-   - react.dev/learn/conditional-rendering
+   - react.dev/reference/react/useEffect
    - react.dev/reference/react/useState
+   - developer.mozilla.org/es/docs/Web/API/Window/localStorage
+   - developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON
    ========================================================= */
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+/* 
+  Clave (key) para localStorage.
+  Es buena práctica usar un prefijo único para evitar
+  colisiones con otras apps en el mismo dominio.
+*/
+const STORAGE_KEY = 'taskify-lista-compras'
 
 function ListaCompras() {
   /* 
-    Estado PRINCIPAL: array de items de la compra.
+    Estado PRINCIPAL con LAZY INITIALIZER:
     
-    Cada item tiene la estructura:
-    {
-      id: number,        // Date.now() — timestamp único
-      nombre: string,    // texto ingresado por el usuario
-      comprado: boolean  // false inicialmente
-    }
+    useState(() => { ... })
     
-    ⚠️ NOTA sobre Date.now() como ID:
-    Es suficientemente único para fines educativos.
-    En producción se usaría UUID o IDs del backend.
-    Si se agregan 2 items en el mismo milisegundo,
-    compartirían ID (poco probable pero posible).
+    La función se ejecuta UNA SOLA VEZ al montar el componente.
+    Lee los datos guardados de localStorage.
+    
+    try/catch es CRUCIAL porque:
+    - localStorage puede haber sido manipulado externamente
+    - JSON.parse() lanza SyntaxError si el JSON es inválido
+    - Sin try/catch, la app entera se rompe al cargar
+    
+    Flujo de inicialización:
+    1. Componente se monta
+    2. useState ejecuta la función lazy
+    3. Busca en localStorage la clave STORAGE_KEY
+    4. Si existe y es JSON válido → lo usa como estado inicial
+    5. Si no existe o está corrupto → usa [] (lista vacía)
+    
+    (react.dev/reference/react/useState#avoiding-recreating-the-initial-state)
   */
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState(() => {
+    try {
+      const guardados = localStorage.getItem(STORAGE_KEY)
+      /* 
+        Si hay datos guardados → parseamos el JSON.
+        Si no hay datos (null) → retornamos array vacío.
+      */
+      return guardados ? JSON.parse(guardados) : []
+    } catch (error) {
+      /* 
+        localStorage corrupto → no rompemos la app.
+        En producción se podría loguear el error.
+        console.warn('localStorage corrupto:', error)
+      */
+      return []
+    }
+  })
 
   /* 
     Estado para el INPUT controlado del formulario.
     Texto que el usuario escribe para agregar un item.
   */
   const [nuevoItem, setNuevoItem] = useState('')
+
+  /* 
+    useEffect — GUARDAR en localStorage cuando items cambie.
+    
+    Se ejecuta DESPUÉS de cada render donde [items] haya
+    cambiado. Esto asegura que localStorage esté siempre
+    sincronizado con el estado.
+    
+    ⚠️ NO usamos useEffect para LEER (eso lo hace el lazy
+    initializer). useEffect es para EFECTOS SECUNDARIOS:
+    operaciones que ocurren "como consecuencia" del render.
+    
+    Dependencia [items]: solo se ejecuta cuando items cambia.
+    Sin dependencias o con [] incorrecto, podríamos tener:
+    - Sin array: loop infinito (render → efecto → setState → render → ...)
+    - Array vacío: solo una vez al montar (no actualiza)
+    
+    (react.dev/reference/react/useEffect#parameters)
+    
+    Conversión de datos:
+    - JSON.stringify(items) → convierte el array a string JSON
+    - localStorage solo guarda strings
+    - Ejemplo: [{id:1, nombre:"Leche"}] → '[{"id":1,"nombre":"Leche"}]'
+  */
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+  }, [items])
 
   /* 
     Función: AGREGAR item (CREATE)
