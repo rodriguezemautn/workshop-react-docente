@@ -56,6 +56,8 @@ import TarjetaPersonal from './components/TarjetaPersonal'
 import ListaProductos from './components/ListaProductos'
 import ContadorLimitado from './components/ContadorLimitado'
 import FormularioRegistro from './components/FormularioRegistro'
+import ListaCompras from './components/ListaCompras'
+import BuscadorPaises from './components/BuscadorPaises'
 
 /* 
   Datos de ejemplo — tareas mockeadas.
@@ -185,6 +187,32 @@ function App() {
           🧑‍🏫 Módulo 02 — Ejercicio 2: Formulario de Registro
         </h2>
         <FormularioRegistro />
+      </section>
+
+      {/* 
+        ═══════════════════════════════════════════════
+        MÓDULO 03: Interactividad y Listas
+        ═══════════════════════════════════════════════
+        
+        Estos componentes introducen:
+        - CRUD completo con arrays en useState
+        - .map() y .filter() para listas dinámicas
+        - Filtrado en tiempo real con input controlado
+        - Valores derivados vs estado redundante
+      */}
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 03 — Ejercicio 1: Lista de Compras Interactiva
+        </h2>
+        <ListaCompras />
+      </section>
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 03 — Ejercicio 2: Buscador en Tiempo Real
+        </h2>
+        <BuscadorPaises />
       </section>
 
       {/* TaskList con las tareas mockeadas de Taskify */}
