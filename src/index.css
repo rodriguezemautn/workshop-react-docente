@@ -118,3 +118,147 @@ body {
   color: #1e293b;
   flex: 1;
 }
+
+/* ==============================================
+   Secciones de Ejercicios
+   ============================================== */
+.ejercicios-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ejercicios-section__titulo {
+  font-size: 1.15rem;
+  color: #2563eb;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* ==============================================
+   TarjetaPersonal
+   ============================================== */
+.tarjetas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.tarjeta-personal {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-personal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-personal__avatar {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta-personal__nombre {
+  font-size: 1.2rem;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.tarjeta-personal__datos {
+  list-style: none;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.tarjeta-personal__item {
+  padding: 0.35rem 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.tarjeta-personal__item:last-child {
+  border-bottom: none;
+}
+
+.tarjeta-personal__label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ==============================================
+   ListaProductos + ProductoItem
+   ============================================== */
+.lista-productos__titulo {
+  font-size: 1.1rem;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.lista-productos__items {
+  list-style: none;
+}
+
+.lista-productos__vacio {
+  text-align: center;
+  color: #94a3b8;
+  padding: 2rem 0;
+  font-style: italic;
+}
+
+.producto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.producto-item:hover {
+  background: #f1f5f9;
+}
+
+.producto-item--agotado {
+  opacity: 0.7;
+}
+
+.producto-item__info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.producto-item__nombre {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.producto-item__precio {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.producto-item__estado {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.producto-item__estado.disponible {
+  color: #16a34a;
+}
+
+.producto-item__estado.agotado {
+  color: #dc2626;
+}
