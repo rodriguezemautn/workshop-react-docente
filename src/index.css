@@ -1152,3 +1152,104 @@ body {
 .carrito-vista__total-precio strong {
   color: var(--accent);
 }
+
+/* ==============================================
+   React Hook Form (FormularioRegistroRHF + TaskFormRHF)
+   ============================================== */
+.formulario-rhf__titulo {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.formulario-rhf__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formulario-rhf__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formulario-rhf__label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formulario-rhf__campo label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.formulario-rhf__campo input {
+  padding: 0.65rem 0.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  outline: none;
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.formulario-rhf__campo input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.formulario-rhf__campo input.input--error {
+  border-color: var(--danger);
+}
+
+.formulario-rhf__campo input.input--error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.formulario-rhf__contador {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.formulario-rhf__contador--alerta {
+  color: var(--warning);
+}
+
+.formulario-rhf__contador--limite {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.formulario-rhf__error {
+  font-size: 0.8rem;
+  color: var(--danger);
+  margin-top: 0.15rem;
+}
+
+.formulario-rhf__btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.formulario-rhf__btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.formulario-rhf__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

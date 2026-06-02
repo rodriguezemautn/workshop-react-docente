@@ -60,6 +60,8 @@ import ListaCompras from './components/ListaCompras'
 import BuscadorPaises from './components/BuscadorPaises'
 import Cronometro from './components/Cronometro'
 import { Tienda, CarritoView } from './components/Tienda'
+import FormularioRegistroRHF from './components/FormularioRegistroRHF'
+import TaskFormRHF from './components/TaskFormRHF'
 import { useTema } from './context/TemaContext'
 
 /* 
@@ -102,6 +104,17 @@ function App() {
     No pasamos tema como prop — lo leemos directamente.
   */
   const { tema } = useTema()
+
+  /* 
+    Función para agregar tarea (usada por TaskFormRHF).
+    Por ahora solo muestra un mensaje, ya que las tareas
+    son estáticas en esta etapa. En el Módulo 07 se
+    convertirán en estado dinámico con useState.
+  */
+  function agregarTarea(nuevaTarea) {
+    alert(`✅ Tarea agregada: "${nuevaTarea.titulo}"`)
+    console.log('Nueva tarea:', nuevaTarea)
+  }
 
   return (
     /*
@@ -283,6 +296,38 @@ function App() {
           <Tienda />
           <CarritoView />
         </div>
+      </section>
+
+      {/* 
+        ═══════════════════════════════════════════════
+        MÓDULO 06: Formularios con React Hook Form
+        ═══════════════════════════════════════════════
+        
+        - Formularios declarativos con register + handleSubmit
+        - Validación: required, minLength, pattern, validate
+        - watch() para contador en tiempo real
+        - Validación de título único (contra tareas existentes)
+      */}
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 06 — Ejercicio 1: Registro con React Hook Form
+        </h2>
+        <FormularioRegistroRHF />
+      </section>
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 06 — Ejercicio 2: TaskForm con Validación Personalizada
+        </h2>
+        <p className="ejercicios-section__desc">
+          Probá: escribir menos de 3 caracteres, más de 50, o un
+          título que ya existe (ej: "Aprender JSX").
+        </p>
+        <TaskFormRHF
+          onAgregar={agregarTarea}
+          tareas={tareasIniciales}
+        />
       </section>
 
       {/* TaskList con las tareas mockeadas de Taskify */}
