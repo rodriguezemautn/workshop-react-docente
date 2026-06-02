@@ -62,6 +62,7 @@ import Cronometro from './components/Cronometro'
 import { Tienda, CarritoView } from './components/Tienda'
 import FormularioRegistroRHF from './components/FormularioRegistroRHF'
 import TaskFormRHF from './components/TaskFormRHF'
+import PostsAxios from './components/PostsAxios'
 import { useTema } from './context/TemaContext'
 
 /* 
@@ -328,6 +329,57 @@ function App() {
           onAgregar={agregarTarea}
           tareas={tareasIniciales}
         />
+      </section>
+
+      {/* 
+        ═══════════════════════════════════════════════
+        MÓDULO 07: API y HTTP con Axios
+        ═══════════════════════════════════════════════
+        
+        - Axios: GET a JSONPlaceholder con loading/error/data
+        - Instancia de Axios con baseURL + interceptors
+        - json-server: API REST local con CRUD completo
+        
+        🚀 Para probar json-server:
+           Terminal 1: npm run server (API en :3001)
+           Terminal 2: npm run dev    (Vite en :5173)
+      */}
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 07 — Ejercicio 1: JSONPlaceholder con Axios
+        </h2>
+        <PostsAxios />
+      </section>
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 07 — Ejercicio 2: CRUD con json-server
+        </h2>
+        <p className="ejercicios-section__desc">
+          Corré <code>npm run server</code> en otra terminal y después
+          descomentá la integración en App.jsx para conectar Taskify
+          con la API local en <code>http://localhost:3001</code>.
+        </p>
+        <div className="api-setup-info">
+          <h4>📋 Pasos para integrar:</h4>
+          <ol>
+            <li><code>npm run server</code> — inicia json-server</li>
+            <li>La API sirve en <code>http://localhost:3001/tareas</code></li>
+            <li>
+              Usá <code>src/services/api.js</code> para hacer:
+              GET, POST, PATCH, DELETE
+            </li>
+            <li>
+              Reemplazá el estado local con llamadas API.
+              (Ver <code>src/services/api.js</code> para ejemplos)
+            </li>
+          </ol>
+        </div>
+        <p className="ejercicios-section__desc" style={{ marginTop: '1rem' }}>
+          💡 Tip: copiá <code>src/db.json</code> a la raíz si json-server
+          no encuentra el archivo.
+        </p>
       </section>
 
       {/* TaskList con las tareas mockeadas de Taskify */}

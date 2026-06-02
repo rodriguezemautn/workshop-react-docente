@@ -1,0 +1,7 @@
+{
+  "tareas": [
+    { "id": 1, "titulo": "Aprender JSX", "completada": false },
+    { "id": 2, "titulo": "Crear mi primer componente", "completada": true },
+    { "id": 3, "titulo": "Conectar Taskify con API", "completada": false }
+  ]
+}
