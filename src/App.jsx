@@ -59,6 +59,8 @@ import FormularioRegistro from './components/FormularioRegistro'
 import ListaCompras from './components/ListaCompras'
 import BuscadorPaises from './components/BuscadorPaises'
 import Cronometro from './components/Cronometro'
+import { Tienda, CarritoView } from './components/Tienda'
+import { useTema } from './context/TemaContext'
 
 /* 
   Datos de ejemplo — tareas mockeadas.
@@ -94,8 +96,23 @@ const productos = [
 ]
 
 function App() {
+  /* 
+    useTema() es el custom hook de nuestro contexto.
+    Devuelve { tema, cambiarTema }.
+    No pasamos tema como prop — lo leemos directamente.
+  */
+  const { tema } = useTema()
+
   return (
-    <div className="app">
+    /*
+      Clase dinámica según el tema.
+      Cuando tema es 'oscuro', la clase se convierte en:
+      <div class="app tema-oscuro">
+      
+      Las variables CSS en :root se intercambian según la
+      clase 'tema-oscuro' en <body> (ver TemaContext.jsx).
+    */
+    <div className={`app app--${tema}`}>
       {/* 
         Header recibe props para personalizar su contenido.
         tareasPendientes se calcula con .filter() en tiempo real.
@@ -242,6 +259,30 @@ function App() {
           🧑‍🏫 Módulo 04 — Ejercicio 2: Cronómetro con Cleanup
         </h2>
         <Cronometro />
+      </section>
+
+      {/* 
+        ═══════════════════════════════════════════════
+        MÓDULO 05: Contexto Global
+        ═══════════════════════════════════════════════
+        
+        - TemaContext: accesible desde HEADER (botón toggle)
+          y App (clase dinámica). Sin prop drilling.
+        - CarritoContext: Tienda y CarritoView comparten
+          el mismo estado sin ser padre-hijo directos.
+        
+        ⚡ El botón de tema está en el HEADER (arriba).
+        Probá clickear "🌙 Oscuro" / "☀️ Claro".
+      */}
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 05 — Ejercicio 2: Carrito de Compras con Context
+        </h2>
+        <div className="carrito-demo">
+          <Tienda />
+          <CarritoView />
+        </div>
       </section>
 
       {/* TaskList con las tareas mockeadas de Taskify */}

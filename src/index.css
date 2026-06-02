@@ -1,7 +1,54 @@
 /* ==============================================
    Taskify — Estilos Completos
    Workshop React | Desarrollo de Software 2026
+
+   🎨 TEMAS
+   ─────────
+   Usamos variables CSS para los colores.
+   La clase 'tema-oscuro' en <body> intercambia
+   las variables. Los componentes usan var(--bg),
+   var(--text), etc. y cambian automáticamente.
+   
+   Variables CSS (aka Custom Properties):
+   - Se definen con --nombre: valor
+   - Se usan con var(--nombre)
+   - Heredan por el árbol del DOM
+   - Se pueden cambiar dinámicamente
+   
+   (developer.mozilla.org/es/docs/Web/CSS/Using_CSS_custom_properties)
    ============================================== */
+
+/* --- Variables de TEMA CLARO (por defecto) --- */
+:root {
+  --bg-body: #f0f2f5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --text-primary: #1a1a2e;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --success: #16a34a;
+  --warning: #eab308;
+  --danger: #dc2626;
+}
+
+/* --- Variables de TEMA OSCURO --- */
+.tema-oscuro {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --bg-card-hover: #334155;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-color: #334155;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --success: #4ade80;
+  --warning: #facc15;
+  --danger: #f87171;
+}
 
 /* --- Reset --- */
 *,
@@ -14,15 +61,16 @@
 
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f0f2f5;
-  color: #1a1a2e;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
   padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
-  max-width: 640px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -33,45 +81,89 @@ body {
   text-align: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 2px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.header__tema-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.header__tema-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-card-hover);
+}
+
+.header__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.header__badge-carrito {
+  background: var(--accent);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .header h1 {
   font-size: 2.5rem;
-  color: #2563eb;
+  color: var(--accent);
   font-weight: 800;
 }
 
 .header .subtitulo {
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 0.95rem;
   margin-top: 0.25rem;
 }
 
 .header .contador {
-  margin-top: 0.75rem;
   font-size: 1rem;
-  color: #475569;
+  color: var(--text-secondary);
 }
 
 .header .contador strong {
-  color: #2563eb;
+  color: var(--accent);
 }
 
 /* ==============================================
    TaskList
    ============================================== */
 .task-list {
-  background: white;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 .task-list h2 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .task-list ul {
@@ -80,7 +172,7 @@ body {
 
 .task-list .vacio {
   text-align: center;
-  color: #94a3b8;
+  color: var(--text-muted);
   padding: 2rem 0;
   font-style: italic;
 }
@@ -95,17 +187,17 @@ body {
   padding: 0.75rem 1rem;
   border-radius: 8px;
   margin-bottom: 0.5rem;
-  background: #f8fafc;
+  background: var(--bg-card-hover);
   transition: background 0.2s ease;
 }
 
 .task-card:hover {
-  background: #f1f5f9;
+  filter: brightness(0.96);
 }
 
 .task-card--completada .task-card__titulo {
   text-decoration: line-through;
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 .task-card__estado {
@@ -115,7 +207,7 @@ body {
 
 .task-card__titulo {
   font-size: 1rem;
-  color: #1e293b;
+  color: var(--text-primary);
   flex: 1;
 }
 
@@ -123,19 +215,30 @@ body {
    Secciones de Ejercicios
    ============================================== */
 .ejercicios-section {
-  background: white;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 .ejercicios-section__titulo {
   font-size: 1.15rem;
-  color: #2563eb;
+  color: var(--accent);
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.ejercicios-section__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-card-hover);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
 }
 
 /* ==============================================
@@ -148,11 +251,11 @@ body {
 }
 
 .tarjeta-personal {
-  background: #f8fafc;
+  background: var(--bg-card-hover);
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -169,7 +272,7 @@ body {
 
 .tarjeta-personal__nombre {
   font-size: 1.2rem;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
@@ -183,7 +286,7 @@ body {
   padding: 0.35rem 0;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px dashed #e2e8f0;
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .tarjeta-personal__item:last-child {
@@ -191,7 +294,7 @@ body {
 }
 
 .tarjeta-personal__label {
-  color: #64748b;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -200,7 +303,7 @@ body {
    ============================================== */
 .lista-productos__titulo {
   font-size: 1.1rem;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -210,7 +313,7 @@ body {
 
 .lista-productos__vacio {
   text-align: center;
-  color: #94a3b8;
+  color: var(--text-muted);
   padding: 2rem 0;
   font-style: italic;
 }
@@ -221,13 +324,13 @@ body {
   align-items: center;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
-  background: #f8fafc;
+  background: var(--bg-card-hover);
   border-radius: 8px;
   transition: background 0.2s ease;
 }
 
 .producto-item:hover {
-  background: #f1f5f9;
+  filter: brightness(0.96);
 }
 
 .producto-item--agotado {
@@ -242,11 +345,11 @@ body {
 
 .producto-item__nombre {
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .producto-item__precio {
-  color: #475569;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
@@ -256,11 +359,11 @@ body {
 }
 
 .producto-item__estado.disponible {
-  color: #16a34a;
+  color: var(--success);
 }
 
 .producto-item__estado.agotado {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 /* ==============================================
@@ -272,7 +375,7 @@ body {
 
 .contador-limitado__titulo {
   font-size: 1.1rem;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -285,20 +388,20 @@ body {
 }
 
 .contador-limitado__numero.contador--seguro {
-  color: #16a34a;
+  color: var(--success);
 }
 
 .contador-limitado__numero.contador--atencion {
-  color: #eab308;
+  color: var(--warning);
 }
 
 .contador-limitado__numero.contador--peligro {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 .contador-limitado__info {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
@@ -311,9 +414,9 @@ body {
 .contador-limitado__btn {
   width: 48px;
   height: 48px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 12px;
-  background: white;
+  background: var(--bg-card);
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
@@ -324,24 +427,24 @@ body {
 }
 
 .contador-limitado__btn:hover:not(:disabled) {
-  background: #f1f5f9;
-  border-color: #2563eb;
-  color: #2563eb;
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .contador-limitado__btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  background: #f1f5f9;
+  background: var(--bg-card-hover);
 }
 
 .contador-limitado__btn--menos {
-  color: #dc2626;
+  color: var(--danger);
   border-color: #fecaca;
 }
 
 .contador-limitado__btn--mas {
-  color: #16a34a;
+  color: var(--success);
   border-color: #bbf7d0;
 }
 
@@ -350,7 +453,7 @@ body {
   padding: 0 1rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 /* ==============================================
@@ -358,7 +461,7 @@ body {
    ============================================== */
 .formulario-registro__titulo {
   font-size: 1.1rem;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -377,25 +480,27 @@ body {
 .formulario-registro__campo label {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--text-secondary);
 }
 
 .formulario-registro__campo input {
   padding: 0.65rem 0.75rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s ease;
   outline: none;
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
 }
 
 .formulario-registro__campo input:focus {
-  border-color: #2563eb;
+  border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .formulario-registro__campo input.input--error {
-  border-color: #dc2626;
+  border-color: var(--danger);
 }
 
 .formulario-registro__campo input.input--error:focus {
@@ -404,13 +509,13 @@ body {
 
 .formulario-registro__error {
   font-size: 0.8rem;
-  color: #dc2626;
+  color: var(--danger);
   margin-top: 0.15rem;
 }
 
 .formulario-registro__btn {
   padding: 0.75rem 1.5rem;
-  background: #2563eb;
+  background: var(--accent);
   color: white;
   border: none;
   border-radius: 8px;
@@ -422,7 +527,7 @@ body {
 }
 
 .formulario-registro__btn:hover {
-  background: #1d4ed8;
+  background: var(--accent-hover);
 }
 
 .formulario-registro__enviado {
@@ -431,16 +536,17 @@ body {
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
   border-radius: 8px;
+  color: var(--text-primary);
 }
 
 .formulario-registro__enviado h4 {
-  color: #16a34a;
+  color: var(--success);
   margin-bottom: 0.5rem;
 }
 
 .formulario-registro__enviado p {
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--text-secondary);
   margin-bottom: 0.25rem;
 }
 
@@ -449,7 +555,7 @@ body {
    ============================================== */
 .lista-compras__titulo {
   font-size: 1.1rem;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -462,21 +568,23 @@ body {
 .lista-compras__input {
   flex: 1;
   padding: 0.65rem 0.75rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.2s ease;
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
 }
 
 .lista-compras__input:focus {
-  border-color: #2563eb;
+  border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .lista-compras__btn-agregar {
   padding: 0.65rem 1.25rem;
-  background: #2563eb;
+  background: var(--accent);
   color: white;
   border: none;
   border-radius: 8px;
@@ -488,22 +596,22 @@ body {
 }
 
 .lista-compras__btn-agregar:hover {
-  background: #1d4ed8;
+  background: var(--accent-hover);
 }
 
 .lista-compras__contador {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--text-secondary);
   margin-bottom: 0.75rem;
   padding: 0.5rem 0.75rem;
-  background: #f8fafc;
+  background: var(--bg-card-hover);
   border-radius: 6px;
   display: inline-block;
 }
 
 .lista-compras__vacio {
   text-align: center;
-  color: #94a3b8;
+  color: var(--text-muted);
   padding: 2rem 0;
   font-style: italic;
 }
@@ -518,13 +626,13 @@ body {
   gap: 0.75rem;
   padding: 0.65rem 0.75rem;
   margin-bottom: 0.4rem;
-  background: #f8fafc;
+  background: var(--bg-card-hover);
   border-radius: 8px;
   transition: all 0.2s ease;
 }
 
 .lista-compras__item:hover {
-  background: #f1f5f9;
+  filter: brightness(0.96);
 }
 
 .lista-compras__item--comprado {
@@ -533,20 +641,20 @@ body {
 
 .lista-compras__item--comprado .lista-compras__nombre {
   text-decoration: line-through;
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 .lista-compras__checkbox {
   width: 18px;
   height: 18px;
   cursor: pointer;
-  accent-color: #16a34a;
+  accent-color: var(--success);
   flex-shrink: 0;
 }
 
 .lista-compras__nombre {
   flex: 1;
-  color: #1e293b;
+  color: var(--text-primary);
   font-size: 0.95rem;
 }
 
@@ -556,7 +664,7 @@ body {
   border: none;
   border-radius: 6px;
   background: transparent;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -568,14 +676,14 @@ body {
 
 .lista-compras__btn-eliminar:hover {
   background: #fef2f2;
-  color: #dc2626;
+  color: var(--danger);
 }
 
 .lista-compras__btn-limpiar {
   margin-top: 0.75rem;
   padding: 0.5rem 1rem;
   background: #fef2f2;
-  color: #dc2626;
+  color: var(--danger);
   border: 1px solid #fecaca;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -595,7 +703,7 @@ body {
    ============================================== */
 .buscador-paises__titulo {
   font-size: 1.1rem;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -604,14 +712,15 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 0.75rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   transition: border-color 0.2s ease;
   margin-bottom: 0.75rem;
+  background: var(--bg-card-hover);
 }
 
 .buscador-paises__input-wrapper:focus-within {
-  border-color: #2563eb;
+  border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
@@ -626,12 +735,13 @@ body {
   outline: none;
   font-size: 1rem;
   background: transparent;
+  color: var(--text-primary);
 }
 
 .buscador-paises__limpiar {
   border: none;
   background: transparent;
-  color: #94a3b8;
+  color: var(--text-muted);
   cursor: pointer;
   padding: 0.2rem;
   font-size: 0.9rem;
@@ -641,13 +751,13 @@ body {
 }
 
 .buscador-paises__limpiar:hover {
-  color: #dc2626;
+  color: var(--danger);
   background: #fef2f2;
 }
 
 .buscador-paises__resultados {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--text-secondary);
   margin-bottom: 0.75rem;
 }
 
@@ -663,19 +773,19 @@ body {
   align-items: center;
   padding: 0.55rem 0.75rem;
   margin-bottom: 0.3rem;
-  background: #f8fafc;
+  background: var(--bg-card-hover);
   border-radius: 8px;
   font-size: 0.95rem;
   transition: background 0.15s ease;
 }
 
 .buscador-paises__item:hover {
-  background: #f1f5f9;
+  filter: brightness(0.96);
 }
 
 .buscador-paises__item-numero {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -690,7 +800,7 @@ body {
 .buscador-paises__sin-resultados {
   text-align: center;
   padding: 2rem 0;
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 .buscador-paises__sin-resultados p {
@@ -699,7 +809,7 @@ body {
 
 .buscador-paises__btn-reintentar {
   padding: 0.5rem 1rem;
-  background: #2563eb;
+  background: var(--accent);
   color: white;
   border: none;
   border-radius: 8px;
@@ -710,7 +820,7 @@ body {
 }
 
 .buscador-paises__btn-reintentar:hover {
-  background: #1d4ed8;
+  background: var(--accent-hover);
 }
 
 /* ==============================================
@@ -722,7 +832,7 @@ body {
 
 .cronometro__titulo {
   font-size: 1.1rem;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -737,11 +847,11 @@ body {
 }
 
 .cronometro--activo {
-  color: #16a34a;
+  color: var(--success);
 }
 
 .cronometro--pausado {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 .cronometro__botones {
@@ -753,13 +863,14 @@ body {
 
 .cronometro__btn {
   padding: 0.7rem 1.25rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
-  background: white;
+  background: var(--bg-card);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: var(--text-primary);
 }
 
 .cronometro__btn:disabled {
@@ -768,7 +879,7 @@ body {
 }
 
 .cronometro__btn--iniciar {
-  color: #16a34a;
+  color: var(--success);
   border-color: #bbf7d0;
 }
 
@@ -778,7 +889,7 @@ body {
 }
 
 .cronometro__btn--pausar {
-  color: #eab308;
+  color: var(--warning);
   border-color: #fef08a;
 }
 
@@ -788,31 +899,256 @@ body {
 }
 
 .cronometro__btn--reiniciar {
-  color: #64748b;
-  border-color: #e2e8f0;
+  color: var(--text-muted);
+  border-color: var(--border-color);
 }
 
 .cronometro__btn--reiniciar:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #94a3b8;
+  background: var(--bg-card-hover);
+  border-color: var(--text-muted);
 }
 
 .cronometro__nota {
   margin-top: 1rem;
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-style: italic;
 }
 
 /* ==============================================
-   Descripción de ejercicios
+   Tienda + Carrito
    ============================================== */
-.ejercicios-section__desc {
-  font-size: 0.9rem;
-  color: #64748b;
+.carrito-demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .carrito-demo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Tienda (catálogo de productos) --- */
+.tienda__titulo {
+  font-size: 1.1rem;
+  color: var(--text-primary);
   margin-bottom: 1rem;
-  padding: 0.5rem 0.75rem;
-  background: #f8fafc;
+}
+
+.tienda__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.tienda__producto {
+  background: var(--bg-card-hover);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.tienda__producto:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tienda__producto-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tienda__producto-nombre {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.tienda__producto-precio {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.tienda__btn-agregar {
+  padding: 0.4rem 0.75rem;
+  background: var(--accent);
+  color: white;
+  border: none;
   border-radius: 6px;
-  border-left: 3px solid #2563eb;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.tienda__btn-agregar:hover {
+  background: var(--accent-hover);
+}
+
+/* --- Carrito Vista --- */
+.carrito-vista {
+  background: var(--bg-card-hover);
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.carrito-vista__titulo {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.carrito-vista__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.carrito-vista__btn-limpiar {
+  padding: 0.3rem 0.6rem;
+  background: #fef2f2;
+  color: var(--danger);
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carrito-vista__btn-limpiar:hover {
+  background: #fee2e2;
+}
+
+.carrito-vista__vacio {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem 0;
+  font-style: italic;
+}
+
+.carrito-vista__lista {
+  list-style: none;
+}
+
+.carrito-vista__item {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.carrito-vista__item:last-child {
+  border-bottom: none;
+}
+
+.carrito-vista__item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+.carrito-vista__item-nombre {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.carrito-vista__item-precio-unit {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.carrito-vista__item-controles {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.carrito-vista__btn-cant {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrito-vista__btn-cant:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.carrito-vista__item-cantidad {
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.carrito-vista__item-subtotal {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.carrito-vista__btn-quitar {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrito-vista__btn-quitar:hover {
+  background: #fef2f2;
+  color: var(--danger);
+}
+
+.carrito-vista__resumen {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 2px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carrito-vista__total-items {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.carrito-vista__total-precio {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.carrito-vista__total-precio strong {
+  color: var(--accent);
 }
