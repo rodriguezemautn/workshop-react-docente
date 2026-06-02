@@ -54,6 +54,8 @@ import Header from './components/Header'
 import TaskList from './components/TaskList'
 import TarjetaPersonal from './components/TarjetaPersonal'
 import ListaProductos from './components/ListaProductos'
+import ContadorLimitado from './components/ContadorLimitado'
+import FormularioRegistro from './components/FormularioRegistro'
 
 /* 
   Datos de ejemplo — tareas mockeadas.
@@ -157,6 +159,32 @@ function App() {
           🧑‍🏫 Módulo 01 — Ejercicio 2: Lista de Productos
         </h2>
         <ListaProductos productos={productos} />
+      </section>
+
+      {/* 
+        ═══════════════════════════════════════════════
+        MÓDULO 02: Estado y Eventos
+        ═══════════════════════════════════════════════
+        
+        Estos componentes introducen:
+        - useState para manejar datos que cambian
+        - Eventos onClick, onChange, onSubmit
+        - Inputs controlados (value + onChange)
+        - Renderizado condicional de errores y datos
+      */}
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 02 — Ejercicio 1: Contador con Límites
+        </h2>
+        <ContadorLimitado />
+      </section>
+
+      <section className="ejercicios-section">
+        <h2 className="ejercicios-section__titulo">
+          🧑‍🏫 Módulo 02 — Ejercicio 2: Formulario de Registro
+        </h2>
+        <FormularioRegistro />
       </section>
 
       {/* TaskList con las tareas mockeadas de Taskify */}
