@@ -7,9 +7,26 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ---
 
-## [1.0.0] — 2026-06-09
+## [1.1.0] — 2026-06-09
 
 ### ✨ Añadido
+
+#### Nueva estructura: Proyectos Vite independientes por ejercicio
+
+Cada ejercicio ahora es un proyecto Vite autónomo dentro de `modulos/*/resolucion/ejercicio-XX/`.
+Se ejecuta con `npm run dev` sin dependencias de otros módulos ni del `src/` principal.
+
+```
+modulos/*/resolucion/ejercicio-XX/
+├── index.html
+├── package.json
+├── vite.config.js
+└── src/
+    ├── main.jsx
+    ├── App.jsx
+    ├── Componente.jsx      ← componente del ejercicio
+    └── index.css
+```
 
 #### Módulo 01: Fundamentos de React
 
@@ -21,6 +38,25 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
   - Checks de entendimiento al final de cada paso
   - Ejercicios extras para práctica autónoma
 
+- **Ejercicio 01 resuelto** — `modulos/01-fundamentos/resolucion/ejercicio-01/`
+  - `TarjetaPersonal` con props (nombre, edad, ciudad)
+  - Reutilización: 3 instancias con diferentes datos
+  - BEM CSS con grid responsivo y hover
+
+#### Módulo 02: Estado y Eventos (`feat/02_estados_y_eventos`)
+
+- **Ejercicio 01 resuelto** — `modulos/02-estado-y-eventos/resolucion/ejercicio-01/`
+  - `ContadorLimitado` con useState (límites 0-10)
+  - Botones +/- con `disabled` condicional
+  - Color dinámico: verde (<5), amarillo (5-8), rojo (9-10)
+
+- **Ejercicio 02 resuelto** — `modulos/02-estado-y-eventos/resolucion/ejercicio-02/`
+  - `FormularioRegistro` con 3 inputs controlados (nombre, email, password)
+  - Validación con mensajes de error por campo (vacío, email inválido)
+  - `e.preventDefault()` + `onSubmit`
+  - Spread operator para inmutabilidad del estado
+  - Ocultar contraseña con `{'•'.repeat()}`
+
 #### Docs
 
 - **`CHANGELOG.md`** — Registro de cambios del proyecto
@@ -28,68 +64,44 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 - **`docs/react-summary.md`** — Síntesis de conceptos de React para el docente
 - **`docs/apuntes/`** — Material didáctico en PDF (2 archivos)
 
-### 🏗️ Implementado (sesiones anteriores)
-
-- **Módulo 01** (`feat/mod-01-fundamentos`): Componentes, JSX, Props
-  - Componentes: `Header`, `TaskCard`, `TarjetaPersonal`, `ListaProductos`, `ProductoItem`, `TaskList`
-  - Datos estáticos, flujo unidireccional padre → hijo
-
-- **Módulo 02** (`feat/mod-02-estado-y-eventos`): `useState`, Eventos
-  - `ContadorLimitado` — estado numérico con límites
-  - `FormularioRegistro` — inputs controlados con `onChange`
-
-- **Módulo 03** (`feat/mod-03-interactividad`): CRUD de listas
-  - `ListaCompras` — agregar, toggle, eliminar items
-  - `BuscadorPaises` — filtrado en tiempo real con `.filter()`
-
-- **Módulo 04** (`feat/mod-04-efectos-y-persistencia`): `useEffect`, `localStorage`
-  - Persistencia de lista de compras
-  - `Cronometro` — intervalos con cleanup
-
-- **Módulo 05** (`feat/mod-05-contexto-global`): `useContext`
-  - `TemaContext` — tema claro/oscuro con persistencia
-  - `CarritoContext` — carrito de compras global
-
-- **Módulo 06** (`feat/mod-06-formularios`): React Hook Form
-  - `FormularioRegistroRHF` — `register`, `handleSubmit`, `errors`
-  - `TaskFormRHF` — validación personalizada (título único)
-
-- **Módulo 07** (`feat/mod-07-api-y-http`): Axios, json-server
-  - `PostsAxios` — GET a JSONPlaceholder con loading/error
-  - Servicio API con instancia de Axios
-  - json-server para CRUD local
-
 ### 📁 Estructura del proyecto
 
 ```
 workshop-react-docente/
-├── CHANGELOG.md                     ← Este archivo
-├── docs/                            # Material para el docente
-│   ├── project.md                   # Visión y alcance del workshop
-│   ├── react-summary.md             # Síntesis de conceptos React
-│   └── apuntes/                     # PDFs de la guía didáctica
-├── modulos/                         # Material didáctico por módulo
+├── CHANGELOG.md                     ← Registro de cambios
+├── docs/                            ← Material para el docente
+│   ├── project.md
+│   ├── react-summary.md
+│   └── apuntes/
+├── modulos/                         ← Material didáctico por módulo
 │   ├── 01-fundamentos/
-│   │   ├── README.md                # Plan de clase
-│   │   ├── presentacion.md          # Slides (formato Marp)
-│   │   ├── presentacion.html        # Slides en HTML
-│   │   ├── resolucion-paso-a-paso.md # 👈 Guía pedagógica (nueva)
-│   │   └── ejercicios/              # Consignas para alumnos
+│   │   ├── README.md                ← Plan de clase + tabla de ejercicios
+│   │   ├── presentacion.md / .html  ← Slides (Marp)
+│   │   ├── resolucion-paso-a-paso.md← Guía pedagógica
+│   │   ├── ejercicios/              ← Consignas .md para alumnos
+│   │   └── resolucion/              ← Proyectos Vite independientes
+│   │       └── ejercicio-01/        ← TarjetaPersonal
 │   ├── 02-estado-y-eventos/
+│   │   ├── README.md
+│   │   ├── presentacion.md / .html
+│   │   ├── ejercicios/
+│   │   └── resolucion/
+│   │       ├── ejercicio-01/        ← ContadorLimitado
+│   │       └── ejercicio-02/        ← FormularioRegistro
 │   ├── 03-interactividad/
 │   ├── 04-efectos-y-persistencia/
 │   ├── 05-contexto-global/
 │   ├── 06-formularios/
 │   ├── 07-api-y-http/
-│   └── propuestas/                  # Propuestas de mejora SDD
-├── src/                             # Código de la aplicación
-│   ├── components/                  # Componentes React
-│   ├── context/                     # Context providers
-│   ├── services/                    # Servicios (Axios)
-│   ├── App.jsx                      # Componente raíz
-│   ├── main.jsx                     # Punto de entrada
-│   ├── index.css                    # Estilos globales
-│   └── db.json                      # Datos para json-server
+│   └── propuestas/
+├── src/                             ← App integrada (todos los módulos)
+│   ├── components/
+│   ├── context/
+│   ├── services/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   └── db.json
 ├── index.html
 ├── package.json
 └── vite.config.js
