@@ -44,10 +44,39 @@
 | 5 | Tu primer componente + Props | Coding | 25 min |
 | 6 | Ejercicios prácticos | Coding | 30 min |
 
-## 🏠 Ejercicios para Casa
+## 💻 Resolución — Proyectos Independientes
 
-- Ejercicio 01: Mi primer componente (obligatorio)
-- Ejercicio 02: Props y reutilización (obligatorio)
+Cada ejercicio tiene su propio proyecto Vite en [`resolucion/`](./resolucion/). Esto permite:
+
+- Ejecutar CADA ejercicio por separado (`npm run dev`)
+- Ver SOLO el código necesario para ese ejercicio
+- Sin contaminación de otros módulos o ejercicios
+
+### Cómo ejecutar un ejercicio
+
+```bash
+# 1. Entrá a la carpeta del ejercicio
+cd modulos/01-fundamentos/resolucion/ejercicio-01
+
+# 2. Instalá las dependencias (solo la primera vez)
+npm install
+
+# 3. Iniciá el servidor de desarrollo
+npm run dev
+```
+
+### Ejercicios resueltos
+
+| # | Ejercicio | Consigna | Resolución |
+|---|-----------|----------|------------|
+| 1 | Mi primer componente | [`01-mi-primer-componente.md`](./ejercicios/01-mi-primer-componente.md) | [`resolucion/ejercicio-01/`](./resolucion/ejercicio-01/) |
+| 2 | Props y reutilización | [`02-props-y-reutilizacion.md`](./ejercicios/02-props-y-reutilizacion.md) | *(pendiente)* |
+
+## 📖 Guía de Resolución Paso a Paso
+
+📄 **[`resolucion-paso-a-paso.md`](./resolucion-paso-a-paso.md)**
+
+Guía didáctica que acompaña al alumno desde la configuración de Vite hasta la composición de componentes con listas. Incluye explicaciones línea por línea, notas académicas con referencias oficiales, y checks de entendimiento.
 
 ## 📝 Criterios de Evaluación
 
