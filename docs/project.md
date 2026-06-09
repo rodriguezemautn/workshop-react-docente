@@ -49,16 +49,41 @@ App de gestión de tareas que los alumnos construyen incrementalmente.
 ## Estructura del proyecto
 
 ```
-workshop-react/
-├── docs/
+workshop-react-docente/
+├── CHANGELOG.md                    # Registro de cambios del proyecto
+├── docs/                           # Material para el docente
 │   ├── project.md                  # Este archivo (alcance y visión)
+│   ├── react-summary.md            # Síntesis de conceptos React
 │   └── apuntes/                    # Material didáctico PDF
 │       ├── Introduccion_ReactJS - DS - C08.pdf
 │       └── Desarrollo Frontend Moderno_ Introducción a React - DS - C08.pdf
-├── src/                            # Código fuente de la app
-│   ├── components/                 # Componentes de la app
-│   ├── context/                    # Contextos (tema, etc.)
-│   └── App.jsx                     # Componente raíz
+├── modulos/                        # Material didáctico por módulo
+│   ├── 01-fundamentos/
+│   │   ├── ejercicios/             # Consignas .md para alumnos
+│   │   ├── resolucion/             # Proyectos Vite independientes (resueltos)
+│   │   │   └── ejercicio-01/       #   → npm install && npm run dev
+│   │   ├── resolucion-paso-a-paso.md
+│   │   └── README.md
+│   ├── 02-estado-y-eventos/
+│   │   ├── ejercicios/
+│   │   ├── resolucion/
+│   │   │   ├── ejercicio-01/       # ContadorLimitado
+│   │   │   └── ejercicio-02/       # FormularioRegistro
+│   │   └── README.md
+│   ├── 03-interactividad/
+│   ├── 04-efectos-y-persistencia/
+│   ├── 05-contexto-global/
+│   ├── 06-formularios/
+│   ├── 07-api-y-http/
+│   └── propuestas/                 # Propuestas de mejora SDD
+├── src/                            # Código fuente (app integrada)
+│   ├── components/
+│   ├── context/
+│   ├── services/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   └── db.json
 ├── index.html
 ├── package.json
 └── vite.config.js

@@ -1,0 +1,20 @@
+{
+  "name": "mod02-ej02-formulario-registro",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Ejercicio 02 - Módulo 02: Formulario controlado con validación",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.0"
+  }
+}

@@ -35,10 +35,30 @@
 | 4 | Inmutabilidad: arrays y objetos | Teoría | 10 min |
 | 5 | Ejercicios prácticos | Coding | 35 min |
 
-## 🏠 Ejercicios para Casa
+## 💻 Resolución — Proyectos Independientes
 
-- Ejercicio 01: Contador interactivo (obligatorio)
-- Ejercicio 02: Formulario controlado (obligatorio)
+Cada ejercicio tiene su propio proyecto Vite en [`resolucion/`](./resolucion/). Se ejecutan por separado para evitar contaminación entre ejercicios.
+
+### Cómo ejecutar
+
+```bash
+# Ejercicio 01
+cd modulos/02-estado-y-eventos/resolucion/ejercicio-01
+npm install
+npm run dev
+
+# Ejercicio 02 (en otra terminal)
+cd modulos/02-estado-y-eventos/resolucion/ejercicio-02
+npm install
+npm run dev
+```
+
+### Ejercicios resueltos
+
+| # | Ejercicio | Consigna | Resolución | Conceptos |
+|---|-----------|----------|------------|-----------|
+| 1 | Contador con Límites | [`01-contador-con-limites.md`](./ejercicios/01-contador-con-limites.md) | [`resolucion/ejercicio-01/`](./resolucion/ejercicio-01/) | `useState`, eventos `onClick`, `disabled`, color condicional |
+| 2 | Formulario de Registro | [`02-formulario-registro.md`](./ejercicios/02-formulario-registro.md) | [`resolucion/ejercicio-02/`](./resolucion/ejercicio-02/) | Inputs controlados, `onSubmit`, validación, `e.preventDefault()` |
 
 ## 📝 Criterios de Evaluación
 
