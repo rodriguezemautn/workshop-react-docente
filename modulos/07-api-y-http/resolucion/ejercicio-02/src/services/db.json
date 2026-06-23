@@ -1,0 +1,7 @@
+{
+  "tareas": [
+    { "id": 1, "titulo": "Estudiar React", "completada": false },
+    { "id": 2, "titulo": "Configurar json-server", "completada": false },
+    { "id": 3, "titulo": "Hacer los ejercicios del Módulo 07", "completada": true }
+  ]
+}
