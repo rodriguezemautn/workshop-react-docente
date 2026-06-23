@@ -1,0 +1,174 @@
+/* =========================================
+   Estilos — Ejercicio 01
+   Persistencia con localStorage
+   ========================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.app-header p {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   Lista de Compras
+   ========================================= */
+.lista-compras {
+  max-width: 480px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.lista-compras__titulo {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #2d3748;
+}
+
+.lista-compras__persistencia {
+  font-size: 0.8rem;
+  color: #48bb78;
+  margin-bottom: 1rem;
+}
+
+.lista-compras__form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.lista-compras__input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.lista-compras__input:focus {
+  outline: none;
+  border-color: #4299e1;
+}
+
+.lista-compras__btn-agregar {
+  padding: 0.75rem 1.25rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.lista-compras__btn-agregar:hover {
+  background: #3182ce;
+}
+
+.lista-compras__contador {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 0.75rem;
+}
+
+.lista-compras__vacio {
+  text-align: center;
+  color: #a0aec0;
+  padding: 2rem 0;
+  font-style: italic;
+}
+
+.lista-compras__items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lista-compras__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.lista-compras__item:hover {
+  background: #f7fafc;
+}
+
+.lista-compras__item--comprado .lista-compras__nombre {
+  text-decoration: line-through;
+  color: #a0aec0;
+  opacity: 0.7;
+}
+
+.lista-compras__checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+}
+
+.lista-compras__nombre {
+  flex: 1;
+}
+
+.lista-compras__btn-eliminar {
+  background: none;
+  border: none;
+  color: #fc8181;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.lista-compras__btn-eliminar:hover {
+  background: #fff5f5;
+  color: #e53e3e;
+}
+
+.lista-compras__btn-limpiar {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fc8181;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.lista-compras__btn-limpiar:hover {
+  background: #e53e3e;
+}

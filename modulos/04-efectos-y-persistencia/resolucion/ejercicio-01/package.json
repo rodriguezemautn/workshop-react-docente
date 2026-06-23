@@ -1,0 +1,20 @@
+{
+  "name": "mod04-ej01-persistencia-localstorage",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Ejercicio 01 - Módulo 04: Persistencia con localStorage en lista de compras",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.0"
+  }
+}

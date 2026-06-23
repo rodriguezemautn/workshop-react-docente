@@ -1,0 +1,127 @@
+/* =========================================
+   Estilos — Ejercicio 02
+   Cronómetro con Cleanup
+   ========================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background: #1a202c;
+  color: #e2e8f0;
+  padding: 2rem;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.app-header p {
+  color: #718096;
+  font-size: 0.9rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* =========================================
+   Cronómetro
+   ========================================= */
+.cronometro {
+  max-width: 480px;
+  margin: 2rem auto;
+  background: #2d3748;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.cronometro__titulo {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.cronometro__display {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fc8181; /* rojo = pausado */
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #1a202c;
+  border-radius: 12px;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.cronometro__display--corriendo {
+  color: #68d391; /* verde = corriendo */
+}
+
+.cronometro__botones {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.cronometro__btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.cronometro__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cronometro__btn--iniciar {
+  background: #48bb78;
+  color: white;
+}
+
+.cronometro__btn--iniciar:hover:not(:disabled) {
+  background: #38a169;
+}
+
+.cronometro__btn--pausar {
+  background: #ed8936;
+  color: white;
+}
+
+.cronometro__btn--pausar:hover:not(:disabled) {
+  background: #dd6b20;
+}
+
+.cronometro__btn--reiniciar {
+  background: #718096;
+  color: white;
+}
+
+.cronometro__btn--reiniciar:hover:not(:disabled) {
+  background: #4a5568;
+}
