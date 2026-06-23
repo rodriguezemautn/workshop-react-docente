@@ -1,0 +1,21 @@
+{
+  "name": "mod06-ej01-registro-rhf",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Ejercicio 01 - Módulo 06: Formulario de registro con React Hook Form",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.0"
+  }
+}
