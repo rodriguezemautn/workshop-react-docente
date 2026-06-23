@@ -1,0 +1,142 @@
+/* =========================================
+   Estilos — Ejercicio 01
+   Tema Claro / Oscuro con Context
+   =========================================
+ *
+ * Usamos variables CSS para cambiar los colores según el tema.
+ * La clase 'oscuro' se aplica al <html> via TemaContext.
+ *
+ * Ventajas de este approach:
+ *   - Un solo punto de cambio (las variables)
+ *   - Transición suave con transition en body
+ *   - Fácil de extender (agregar más variables)
+ */
+
+/* Tema Claro (default) */
+:root {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-tarjeta: #ffffff;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --border: #e2e8f0;
+  --accent: #4299e1;
+  --accent-hover: #3182ce;
+  --toggle-bg: #e2e8f0;
+  --toggle-color: #4a5568;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Tema Oscuro */
+[data-tema="oscuro"] {
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-tarjeta: #2d3748;
+  --text-primary: #e2e8f0;
+  --text-secondary: #a0aec0;
+  --text-tertiary: #718096;
+  --border: #4a5568;
+  --accent: #63b3ed;
+  --accent-hover: #4299e1;
+  --toggle-bg: #4a5568;
+  --toggle-color: #e2e8f0;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Transition suave para el cambio de tema */
+* {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* =========================================
+   Header
+   ========================================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.header__titulo {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.header__modulo {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.header__toggle {
+  padding: 0.5rem 1.25rem;
+  background: var(--toggle-bg);
+  color: var(--toggle-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.header__toggle:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   Contenido
+   ========================================= */
+.contenido {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tarjeta {
+  background: var(--bg-tarjeta);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.tarjeta h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.tarjeta p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.tarjeta code {
+  background: var(--bg-primary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--accent);
+}
