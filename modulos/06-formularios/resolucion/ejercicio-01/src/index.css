@@ -1,0 +1,136 @@
+/* =========================================
+   Estilos — Ejercicio 01
+   Formulario de Registro con RHF
+   ========================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.app-header p {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   Formulario de Registro
+   ========================================= */
+.registro {
+  max-width: 420px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.registro__titulo {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.registro__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.registro__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.registro__label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.registro__input {
+  padding: 0.65rem 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.registro__input:focus {
+  outline: none;
+  border-color: #4299e1;
+}
+
+.registro__input--error {
+  border-color: #fc8181;
+}
+
+.registro__input--error:focus {
+  border-color: #e53e3e;
+}
+
+.registro__error {
+  font-size: 0.8rem;
+  color: #e53e3e;
+}
+
+.registro__btn {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.registro__btn:hover:not(:disabled) {
+  background: #3182ce;
+}
+
+.registro__btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.registro__resultado {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  border-radius: 8px;
+}
+
+.registro__resultado h3 {
+  font-size: 1rem;
+  color: #276749;
+  margin-bottom: 0.5rem;
+}
+
+.registro__resultado p {
+  font-size: 0.9rem;
+  color: #2d3748;
+}
