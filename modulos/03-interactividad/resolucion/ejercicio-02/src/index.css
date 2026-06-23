@@ -1,0 +1,106 @@
+/* =========================================
+   Estilos compartidos — Ejercicio 02
+   Buscador en Tiempo Real
+   ========================================= */
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+/* Header del ejercicio */
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.app-header p {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   Buscador
+   ========================================= */
+.buscador {
+  max-width: 480px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.buscador__titulo {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.buscador__input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.buscador__input:focus {
+  outline: none;
+  border-color: #4299e1;
+}
+
+.buscador__contador {
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.buscador__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.buscador__item {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.buscador__item:hover {
+  background: #f7fafc;
+}
+
+/* Resaltado del texto coincidente */
+.buscador__item mark {
+  background: #fefcbf;
+  color: #744210;
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.buscador__sin-resultados {
+  text-align: center;
+  color: #a0aec0;
+  padding: 2rem 0;
+  font-style: italic;
+}
