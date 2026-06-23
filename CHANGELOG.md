@@ -7,6 +7,86 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ---
 
+## [1.2.0] — 2026-06-23
+
+### ✨ Añadido
+
+#### Módulo 03: Interactividad y Listas (`feat/03_interactividad` → PR #9)
+
+- **Ejercicio 01 resuelto** — `modulos/03-interactividad/resolucion/ejercicio-01/`
+  - `ListaCompras` con CRUD completo: agregar, toggle comprado/no comprado, eliminar
+  - Contador de items y comprados, botón "Limpiar comprados"
+  - Estado vacío con mensaje informativo
+  - BEM classes para estilos
+
+- **Ejercicio 02 resuelto** — `modulos/03-interactividad/resolucion/ejercicio-02/`
+  - `BuscadorPaises` con filtro en tiempo real
+  - Array de 20 países, filtro case-insensitive con `.filter()` + `.includes()`
+  - Resaltado de texto coincidente con `<mark>` (sin bug de lastIndex)
+  - Resultados ordenados alfabéticamente, contador de resultados
+
+#### Módulo 04: Efectos y Persistencia (`feat/04_efectos_y_persistencia` → PR #10)
+
+- **Ejercicio 01 resuelto** — `modulos/04-efectos-y-persistencia/resolucion/ejercicio-01/`
+  - `ListaCompras` persistente con localStorage
+  - `useState` con lazy initializer para leer datos guardados al montar
+  - `useEffect` con `[items]` para guardar cambios automáticamente
+  - `try/catch` para manejar localStorage corrupto
+
+- **Ejercicio 02 resuelto** — `modulos/04-efectos-y-persistencia/resolucion/ejercicio-02/`
+  - `Cronometro` con `setInterval` cada 10ms y cleanup en `useEffect`
+  - `useRef` para mantener el ID del intervalo entre renders
+  - Formato `MM:SS:ss` con `padStart(2, '0')`
+  - Botones Iniciar/Reanudar, Pausar, Reiniciar con `disabled` según estado
+  - Display verde (corriendo) / rojo (pausado)
+
+#### Módulo 05: Contexto Global (`feat/05_contexto_global` → PR #11)
+
+- **Ejercicio 01 resuelto** — `modulos/05-contexto-global/resolucion/ejercicio-01/`
+  - `TemaContext` con `createContext` + `Provider` + custom hook `useTema`
+  - Validación de uso fuera del Provider (error claro)
+  - Variables CSS con `[data-tema="oscuro"]` en el `<html>`
+  - Persistencia en localStorage, transición suave en colores
+
+- **Ejercicio 02 resuelto** — `modulos/05-contexto-global/resolucion/ejercicio-02/`
+  - `CarritoContext` con agregar, quitar (decrementar), limpiar carrito
+  - Acumulación por producto con `findIndex` + aumentar cantidad
+  - Derived state para total y cantidad total (sin duplicar estado)
+  - `useCallback` para estabilidad de funciones del contexto
+  - Badge animado en Header, layout de dos columnas
+
+#### Módulo 06: Formularios (`feat/06_formularios` → PR #12)
+
+- **Ejercicio 01 resuelto** — `modulos/06-formularios/resolucion/ejercicio-01/`
+  - `FormularioRegistro` con React Hook Form
+  - `register`, `handleSubmit`, `watch`, `reset`, `formState`
+  - Validaciones declarativas: required, minLength, pattern, custom validate
+  - `watch('password')` para validación cruzada de confirmar contraseña
+  - `isSubmitting` con simulación de delay, `reset()` post-submit
+
+- **Ejercicio 02 resuelto** — `modulos/06-formularios/resolucion/ejercicio-02/`
+  - `TaskForm` con validación personalizada vía `validate` como objeto
+  - Validaciones: no solo espacios, título único contra tareas existentes
+  - Contador de caracteres en tiempo real con `watch`
+  - Simulación de validación asíncrona con `setTimeout`
+
+#### Módulo 07: API y HTTP (`feat/07_api_y_http` → PR #13)
+
+- **Ejercicio 01 resuelto** — `modulos/07-api-y-http/resolucion/ejercicio-01/`
+  - `ListaPosts` consumiendo JSONPlaceholder con Axios
+  - 3 estados mutuamente excluyentes: loading (spinner), error (con reintentar), data
+  - Expandir posts para ver body completo con toggle animado
+  - `async/await` con `try/catch/finally`
+
+- **Ejercicio 02 resuelto** — `modulos/07-api-y-http/resolucion/ejercicio-02/`
+  - CRUD completo contra json-server: GET, POST, PATCH, DELETE
+  - Instancia de Axios configurada en `services/api.js` (baseURL, timeout)
+  - Optimistic UI en toggle y delete con rollback automático en catch
+  - Toast de notificaciones con auto-destrucción vía `useEffect` cleanup
+  - Script `npm run server` para json-server en puerto 3001
+
+---
+
 ## [1.1.0] — 2026-06-09
 
 ### ✨ Añadido
@@ -89,10 +169,40 @@ workshop-react-docente/
 │   │       ├── ejercicio-01/        ← ContadorLimitado
 │   │       └── ejercicio-02/        ← FormularioRegistro
 │   ├── 03-interactividad/
+│   │   ├── README.md
+│   │   ├── presentacion.md / .html
+│   │   ├── ejercicios/
+│   │   └── resolucion/
+│   │       ├── ejercicio-01/        ← ListaCompras CRUD
+│   │       └── ejercicio-02/        ← BuscadorPaises
 │   ├── 04-efectos-y-persistencia/
+│   │   ├── README.md
+│   │   ├── presentacion.md / .html
+│   │   ├── ejercicios/
+│   │   └── resolucion/
+│   │       ├── ejercicio-01/        ← ListaCompras + localStorage
+│   │       └── ejercicio-02/        ← Cronometro
 │   ├── 05-contexto-global/
+│   │   ├── README.md
+│   │   ├── presentacion.md / .html
+│   │   ├── ejercicios/
+│   │   └── resolucion/
+│   │       ├── ejercicio-01/        ← TemaContext claro/oscuro
+│   │       └── ejercicio-02/        ← CarritoContext
 │   ├── 06-formularios/
+│   │   ├── README.md
+│   │   ├── presentacion.md / .html
+│   │   ├── ejercicios/
+│   │   └── resolucion/
+│   │       ├── ejercicio-01/        ← Registro con RHF
+│   │       └── ejercicio-02/        ← Validación personalizada
 │   ├── 07-api-y-http/
+│   │   ├── README.md
+│   │   ├── presentacion.md / .html
+│   │   ├── ejercicios/
+│   │   └── resolucion/
+│   │       ├── ejercicio-01/        ← JSONPlaceholder + Axios
+│   │       └── ejercicio-02/        ← json-server CRUD
 │   └── propuestas/
 ├── src/                             ← App integrada (todos los módulos)
 │   ├── components/

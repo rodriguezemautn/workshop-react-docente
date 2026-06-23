@@ -22,15 +22,15 @@ App de gestión de tareas que los alumnos construyen incrementalmente.
 
 ### Funcionalidades por etapa
 
-| Etapa | Conceptos | Funcionalidad |
-|-------|-----------|---------------|
-| 1 | Componentes, JSX, Props | Mostrar lista de tareas estática |
-| 2 | useState | Agregar tareas con formulario controlado |
-| 3 | useState avanzado | Marcar como completada, borrar tareas |
-| 4 | useEffect | Persistencia en localStorage |
-| 5 | useContext | Tema claro/oscuro |
-| 6 | React Hook Form | Formulario con validación |
-| 7 | Axios | Sincronizar con API externa |
+| Etapa | Módulo | Conceptos | Funcionalidad |
+|-------|--------|-----------|---------------|
+| 1 | 01 - Fundamentos | Componentes, JSX, Props | Tarjeta personal con props |
+| 2 | 02 - Estado y Eventos | useState, eventos | Contador + Formulario de registro con validación |
+| 3 | 03 - Interactividad | useState avanzado, listas | Lista de compras CRUD + Buscador en tiempo real |
+| 4 | 04 - Efectos y Persistencia | useEffect, localStorage, cleanup | Lista de compras persistente + Cronómetro |
+| 5 | 05 - Contexto Global | useContext, createContext | Tema claro/oscuro global + Carrito de compras |
+| 6 | 06 - Formularios | React Hook Form | Formulario de registro + Validación personalizada |
+| 7 | 07 - API y HTTP | Axios, json-server | Posts desde JSONPlaceholder + CRUD con json-server |
 
 ### Stack Tecnológico
 
@@ -71,10 +71,35 @@ workshop-react-docente/
 │   │   │   └── ejercicio-02/       # FormularioRegistro
 │   │   └── README.md
 │   ├── 03-interactividad/
+│   │   ├── ejercicios/
+│   │   ├── resolucion/
+│   │   │   ├── ejercicio-01/       # ListaCompras CRUD
+│   │   │   └── ejercicio-02/       # BuscadorPaises
+│   │   └── README.md
 │   ├── 04-efectos-y-persistencia/
+│   │   ├── ejercicios/
+│   │   ├── resolucion/
+│   │   │   ├── ejercicio-01/       # ListaCompras + localStorage
+│   │   │   └── ejercicio-02/       # Cronometro
+│   │   └── README.md
 │   ├── 05-contexto-global/
+│   │   ├── ejercicios/
+│   │   ├── resolucion/
+│   │   │   ├── ejercicio-01/       # TemaContext claro/oscuro
+│   │   │   └── ejercicio-02/       # CarritoContext
+│   │   └── README.md
 │   ├── 06-formularios/
+│   │   ├── ejercicios/
+│   │   ├── resolucion/
+│   │   │   ├── ejercicio-01/       # Registro con RHF
+│   │   │   └── ejercicio-02/       # Validación personalizada
+│   │   └── README.md
 │   ├── 07-api-y-http/
+│   │   ├── ejercicios/
+│   │   ├── resolucion/
+│   │   │   ├── ejercicio-01/       # JSONPlaceholder + Axios
+│   │   │   └── ejercicio-02/       # json-server CRUD
+│   │   └── README.md
 │   └── propuestas/                 # Propuestas de mejora SDD
 ├── src/                            # Código fuente (app integrada)
 │   ├── components/
